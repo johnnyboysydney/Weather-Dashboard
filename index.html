@@ -9,15 +9,15 @@
         <meta name="subject" content="Weather Dashboard App">
         <meta name="copyright"content="John Merchan">              
         <title>Weather Dashboard</title>
-         <!-- Bootstrap CSS -->
-         <link rel="stylesheet" type="text/css" href="assets\reset.css">
-         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-         <link rel="stylesheet" type="text/css" href="assets\style.css">
-         <!-- Add icon library -->
-         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-         <link rel="shortcut icon" type="image/x-icon" href="assets\icons\favicon.ico">
-         <!-- Credit goes to the creator & author of the icons used in this app: Laura Reen -->
-         <!-- Link to the original site: https://www.iconfinder.com/iconsets/the-weather-is-nice-today  -->
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" type="text/css" href="assets\reset.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="assets\style.css">
+        <!-- Add icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="shortcut icon" type="image/x-icon" href="assets\icons\favicon.ico">
+        <!-- Credit goes to the creator & author of the icons used in this app: Laura Reen -->
+        <!-- Link to the original site: https://www.iconfinder.com/iconsets/the-weather-is-nice-today  -->
     </head>
     <body>
         <header class="header">
@@ -40,25 +40,37 @@
                 </div>
                 <!-- This is the main display container for the searched city -->
                 <div class="col-sm-8">
-                    <h4 id="cityName">City name goes here</h4>
-                    <h4 id="currentDate">Current Date goes here</h4>
-                    <ul id="resultsWeather">
-                        <li>Temperature:</li>
-                        <li>Humidity:</li>
-                        <li>Wind Speed:</li>
-                        <li>UV index:</li>
-                    </ul>
+                    <div class="row" id="main">
+                        <div class="col-sm-12">
+                            <h4 id="cityName">City name goes here</h4>
+                            <h4 id="currentDate">Current Date goes here</h4>
+                            <ul id="resultsWeather">
+                                <li id="temperature">Temperature:</li>
+                                <li id="humidity">Humidity:</li>
+                                <li id="windSpeed">Wind Speed:</li>
+                                <li id="uvIndex">UV index:</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h5>5-Day forecast:</h5>
+                    <div class="row" id="5dayForecast" >
+                        <section class="col-sm-2" class="forcast" id="day1">day 1</section>
+                        <section class="col-sm-2" class="forcast" id="day1">day 2</section>
+                        <section class="col-sm-2" class="forcast" id="day1">day 3</section>
+                        <section class="col-sm-2" class="forcast" id="day1">day 4</section>
+                        <section class="col-sm-2" class="forcast" id="day1">day 5</section>
+                    </div>
                 </div>
             </div>
     
         </div>
         <!-- Footer elements -->
-        <footer>CopyRight &copy; John Merchan</footer>
-    <!-- Optional JavaScript -->
-    <script src="assets/script.js"></script>
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <footer><p>Weather Forecast App</p>CopyRight &copy; John Merchan</footer>
+        <!-- Optional JavaScript -->
+        <script src="assets/script.js"></script>
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     </body>
 </html>
