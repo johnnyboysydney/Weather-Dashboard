@@ -72,6 +72,7 @@ if the user desires.
     box-sizing: border-box;
   }
   
+  /* Setting the input style */
   form.search input[type=text] {
     padding: 5 px;
     font-size: 14px;
@@ -80,7 +81,7 @@ if the user desires.
     width: 50%;
     background: #f1f1f1;
   }
-  
+  /* Setting the submit button styles and effects, hover, after */
   #search {
     float: left;
     width: 10%;
