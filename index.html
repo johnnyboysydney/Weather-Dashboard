@@ -25,24 +25,29 @@
             <h4>Forcast the weather of any city in the world.</h4>
         </header>
         <div class="container">
-            <form class="search">
-                <label>Search for a city:</label><br>
-                <input type="text" placeholder="Enter a city...">
-                <button type="submit" id="search"><i class="fa fa-search"></i></button><br><br>
-                <!-- Search history will populate below -->
-                <section><a href="">Madrid</a></section>
-                <section><a href="">Sydney</a></section>
-            </form>
-            <!-- This is the main display container for the searched city -->
-            <div class="main">
-                <h4 id="cityName">City name goes here</h4>
-                <h4 id="currentDate">Current Date goes here</h4>
-                <ul id="resultsWeather">
-                    <li>Temperature:</li>
-                    <li>Humidity:</li>
-                    <li>Wind Speed:</li>
-                    <li>UV index:</li>
-                </ul>
+            <div class="row">
+                <div class="sm-4">
+                <form class="search">
+                    <label>Search for a city:</label><br>
+                    <input type="text" placeholder="Enter a city...">
+                    <button type="submit" id="search" name="city" required><i class="fa fa-search"></i></button><br><br>
+                    <!-- Search history will populate below -->
+                    <!-- Below are examples for styling purposes and positioning, will be removed when completed the funtion. -->
+                    <section><a href="">Madrid</a></section>
+                    <section><a href="">Sydney</a></section>
+                </form>
+                </div>
+                <!-- This is the main display container for the searched city -->
+                <div class="sm-8">
+                    <h4 id="cityName">City name goes here</h4>
+                    <h4 id="currentDate">Current Date goes here</h4>
+                    <ul id="resultsWeather">
+                        <li>Temperature:</li>
+                        <li>Humidity:</li>
+                        <li>Wind Speed:</li>
+                        <li>UV index:</li>
+                    </ul>
+                </div>
             </div>
     
         </div>
