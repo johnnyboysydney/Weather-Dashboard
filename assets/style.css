@@ -1,5 +1,8 @@
 /* Setting the dashboard style */
-
+body {
+    font-family: Arial;
+  }
+  
 /* Background image to rotate randomly for the main div */
 
 
@@ -10,9 +13,43 @@
 h1 {
     background-color: rgb(41, 38, 38);
     color: aliceblue;
-
 }
 
 /* Setting the search and history stlye */
+* {
+    box-sizing: border-box;
+  }
+  
+  form.search input[type=text] {
+    padding: 5 px;
+    font-size: 14px;
+    border: 1px solid grey;
+    float: left;
+    width: 15%;
+    background: #f1f1f1;
+  }
+  
+  #search {
+    float: left;
+    width: 5%;
+    padding: 1px;
+    background: #2196F3;
+    color: white;
+    font-size: 14px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+  }
+  
+  #search:hover {
+    background: #0b7dda;
+  }
+  
+  #search::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
 
-/* Setting footer style */
+  /* Setting footer style */
+

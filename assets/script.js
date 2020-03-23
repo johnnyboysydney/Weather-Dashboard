@@ -15,3 +15,4 @@
 // Ensure when opening the weather dashboard, it opens with the last shown city.
 
 // optional - create a switch that can choose a random city wupon opening. 
+// optional - Create a background img for the app depending on the users location and weather at that current time/place.
