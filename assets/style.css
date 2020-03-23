@@ -16,12 +16,18 @@ h1 {
 }
 
 /* Background image to rotate randomly for the main div */
-
+/*
+Work in-progress for the carusel of images for the background
+of the App, which I want to be able to set it fixed
+if the user desires.
+*/
 
 /* Setting the main div style */
 #main {
     background-color: aquamarine;
     text-align: left;
+    padding-bottom: 4%;
+    margin-bottom: 6%;
 }
 
 #main h5 {
@@ -35,12 +41,12 @@ h1 {
 /* setting the 5 Day forecast style */
 #forecast {
     background-color: #f1f1f1;
-   
 }
 
-.square:first-child {
-    align-self: center;
+#forecast li {
+    font-size: 14px;
 }
+
 
 .square {
     background-color: #0b7dda;
@@ -48,9 +54,10 @@ h1 {
     float:left;
     position: relative;
     width: 16%;
-    padding-bottom: 10%; /* = width for a 1:1 aspect ratio */
+    padding-bottom: 1%; /* = width for a 1:1 aspect ratio */
     margin:1.66%;
     overflow:hidden;
+    
 }
 
 .content {
@@ -59,7 +66,6 @@ h1 {
     width:90%; /* = 100% - 2*5% padding */
     padding: 10% 5%;
 }
-
 
 /* Setting the search and history stlye */
 * {
@@ -96,7 +102,6 @@ h1 {
     clear: both;
     display: table;
   }
-
 
   /* Setting footer style */
 footer {
