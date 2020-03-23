@@ -16,3 +16,4 @@
 
 // optional - create a switch that can choose a random city wupon opening. 
 // optional - Create a background img for the app depending on the users location and weather at that current time/place.
+// optional - switch from F to C and viceversa
