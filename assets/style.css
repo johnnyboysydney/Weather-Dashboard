@@ -13,6 +13,7 @@ h1 {
 
 .header h4 {
     text-align: center;
+    padding-left: 50px;
 }
 
 /* Background image to rotate randomly for the main div */
@@ -38,6 +39,23 @@ if the user desires.
     font-size: 15px;
 }
 
+/* Creating the stlye and animation of the image which is an href to the city map */
+#images {
+    border: 2px solid grey;
+}
+
+#images:hover {
+    border: 4px solid darkgray;
+    cursor: pointer;
+}
+
+#images::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
 /* setting the 5 Day forecast style */
 #forecast {
     background-color: #f1f1f1;
@@ -49,7 +67,7 @@ if the user desires.
 
 
 .square {
-    background-color: #0b7dda;
+    background-color: #2196F3;
     color: #f1f1f1;
     float:left;
     position: relative;
@@ -57,7 +75,18 @@ if the user desires.
     padding-bottom: 1%; /* = width for a 1:1 aspect ratio */
     margin:1.66%;
     overflow:hidden;
-    
+    border: 1px solid grey;
+}
+
+.square:hover {
+    background: #0b7dda;
+    cursor: pointer;
+}
+
+.square::after{
+    content: "";
+    clear: both;
+    display: table;
 }
 
 .content {
