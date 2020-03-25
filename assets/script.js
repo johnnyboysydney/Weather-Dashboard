@@ -9,11 +9,12 @@ $("#search").on("click", function() {
     localStorage.setItem("city", city);
     console.log(localStorage.getItem("city"));
     searchCity(city);
+    forecast(city);
 });
 
 // Create the search function 
 function searchCity(city){
-    var apiKey = "3d16044a2eba4d271046d70fd1f2c155";
+    
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=3d16044a2eba4d271046d70fd1f2c155";
     
 $.ajax({
@@ -35,44 +36,46 @@ $.ajax({
     var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     var dateTime = date+' '+time;
+
     // Displaying the date when the city is selected.
     $("#currentDate").text(dateTime);
+    
     // Declaring the function F to C
     var cTemp = fToC(response.main.temp);
+    
     // Function to show Farenheit to Celcious
     function fToC(fahrenheit) {
         const fTemp = Math.round(fahrenheit);
         const fToCel = Math.round((fTemp - 32) * 5 / 9);
         const temp = `${fTemp}\xB0F : ${fToCel}\xB0C.`;
-        console.log(fToCel);
-        console.log(temp);
-        console.log(fTemp);
         return temp;    
     }
     // Show Temperature on main div
     tempT.text("Temperature: "+ cTemp);
 
+    // Formula for C
     //C = (5/9) * (F - 32)
-        // testing outputs with different approach and console.log() to verify its working. 
-    // All below will be cleaned in last refractoring of code. 
-    //var tempF = response.main.temp;
-    //var tempC = response.main.temp;
-    //console.log(tempT);
-    //console.log(cityName);
-    //console.log(humidity);
-    //console.log(windSpeed);
-    //console.log(lon);
-    //console.log(lat);
-    // function to convert Celcious to Farenheit
-    // Might use it later for swtiching options.
-    //function cToF(celsius) {
-    //const cTemp = celsius;
-    //const cToFahr = Math.round(cTemp * 9 / 5 + 32);
-    //const message = `${cTemp}\xB0C is ${cToFahr} \xB0F.`;
-    //console.log(message);
-    //}
+
+
 })
 };
+
+// 5 day forecast function 
+function forecast(city) {
+    
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=3d16044a2eba4d271046d70fd1f2c155";
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(forecastResponse){
+        console.log(forecastResponse);
+
+    
+    })
+};
+
+
+
 
 // Show city name, the date an icon representing the weather conditions, the temperature, the humidity the wind speed, and the UV index.
 
@@ -95,3 +98,23 @@ $.ajax({
 // optional - the users location and weather at that current time/place.
 // optional - Convert from F to C with a switch. Code to change both ways below.
 
+
+// NOTES:
+// testing outputs with different approach and console.log() to verify its working. 
+    // All below will be cleaned in last refractoring of code. 
+    //var tempF = response.main.temp;
+    //var tempC = response.main.temp;
+    //console.log(tempT);
+    //console.log(cityName);
+    //console.log(humidity);
+    //console.log(windSpeed);
+    //console.log(lon);
+    //console.log(lat);
+    // function to convert Celcious to Farenheit
+    // Might use it later for swtiching options.
+    //function cToF(celsius) {
+    //const cTemp = celsius;
+    //const cToFahr = Math.round(cTemp * 9 / 5 + 32);
+    //const message = `${cTemp}\xB0C is ${cToFahr} \xB0F.`;
+    //console.log(message);
+    //}

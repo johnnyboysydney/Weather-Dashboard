@@ -27,8 +27,8 @@ if the user desires.
 #main {
     background-color: aquamarine;
     text-align: left;
-    padding-bottom: 4%;
-    margin-bottom: 6%;
+    padding-bottom: 0%;
+    margin-bottom: 5%;
 }
 
 #main h5 {
