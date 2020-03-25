@@ -29,7 +29,7 @@ $.ajax({
     var windSpeed = $("#windSpeed").text("WindSpeed: " + response.wind.speed + " m/s,");
     var lon = response.coord.lon;
     var lat = response.coord.lat;
-    var cTemp = fToC(response.main.temp);
+    
     // Get date and time and set the current date and time
     var today = new Date();
     var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
@@ -37,11 +37,13 @@ $.ajax({
     var dateTime = date+' '+time;
     // Displaying the date when the city is selected.
     $("#currentDate").text(dateTime);
+    // Declaring the function F to C
+    var cTemp = fToC(response.main.temp);
     // Function to show Farenheit to Celcious
     function fToC(fahrenheit) {
-        const fTemp = fahrenheit;
+        const fTemp = Math.round(fahrenheit);
         const fToCel = Math.round((fTemp - 32) * 5 / 9);
-        const temp = `${fTemp}\xB0F = ${fToCel}\xB0C.`;
+        const temp = `${fTemp}\xB0F : ${fToCel}\xB0C.`;
         console.log(fToCel);
         console.log(temp);
         console.log(fTemp);
