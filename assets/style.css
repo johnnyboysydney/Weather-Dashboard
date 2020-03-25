@@ -42,6 +42,9 @@ if the user desires.
 /* Creating the stlye and animation of the image which is an href to the city map */
 #images {
     border: 2px solid grey;
+    background-image: url(./image.jpg);
+    background-size: 100% 100%;
+
 }
 
 #images:hover {
