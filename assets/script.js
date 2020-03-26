@@ -10,7 +10,7 @@ $("#search").on("click", function() {
         // The following clears the error if errored!
         $("#error").html("")
         localStorage.setItem("city", city);
-        console.log(localStorage.getItem("city"));
+        //console.log(localStorage.getItem("city"));
         searchCity(city);
         forecast(city);
     }
@@ -30,7 +30,7 @@ $.ajax({
     url: queryURL,
     method: "GET"
 }).then(function(response){
-    console.log(response);
+    //console.log(response);
     // Setting variables for the city weather results 
     // show current search on main div
     let cityName =$("#cityName").text(city);
@@ -76,23 +76,33 @@ function forecast(city) {
         method: "GET"
         // forecastFunction
     }).then(function(forecastResponse){
-        // Creating  a filter
+        // Creating  a filter for the 5 days
         var filteredDays = forecastResponse.list.filter(
             function (currentElement){
             return currentElement.dt_txt.includes("12:00:00")
             }	
         );
-        console.log(filteredDays)
-        let content = $(".content")
-        // debugger
-        for (i = 0; i < 5; i++) {
-            let date = content[i].children("ul")[0].children("li").dates
-            //console.log(date)
+        //console.log(filteredDays)
+        // Creating the HTML elements to display the forecast
+        for(let i = 0; i < filteredDays.length; i++ ){
+            // Creating variables that holds the arry of data from filteredDays function
+            let date = filteredDays[i].dt_txt.split(" ")[0];
+            let icon = filteredDays[i].weather.icon;
+            let tempF = filteredDays[i].main.temp;
+            let humidity = filteredDays[i].main.humidity;
 
-            
-        }
-
-
+            // Creating and adding classes and attributes to html elements.
+            let square = $("<div>").attr("class","square");
+            let section = $("<section>").attr("class","content").attr("class", "col-sm-2");
+            let list = $("<ul>");
+            let listElDates = $("<li>").attr("class","dates").text(date);
+            let listElicons = $("<li>").attr("class", "iconDay").text(icon);
+            let listElTempF = $("<li>").attr("class", "tempForecast").text("Temp: " + tempF);
+            let listElHumidityF = $("<li>").attr("class", "hunidityForecast").text("Humidity: " + humidity);
+            square.append(section.append(list.append(listElDates,listElicons,listElTempF,listElHumidityF)))
+             $("#forecast").append(square)
+            console.log(filteredDays[i])
+        }    
     })
 };
 

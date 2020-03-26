@@ -23,6 +23,11 @@ of the App, which I want to be able to set it fixed
 if the user desires.
 */
 
+li {
+    font-size: 14px;
+    text-align: justify;
+}
+
 /* Setting the main div style */
 #main {
     background-color: aquamarine;
@@ -76,7 +81,7 @@ if the user desires.
     position: relative;
     width: 16%;
     padding-bottom: 1%; /* = width for a 1:1 aspect ratio */
-    margin:1.66%;
+    margin:1%;
     overflow:hidden;
     border: 1px solid grey;
 }
@@ -96,7 +101,7 @@ if the user desires.
     position:absolute;
     height:80%; /* = 100% - 2*10% padding */
     width:90%; /* = 100% - 2*5% padding */
-    padding: 10% 5%;
+    padding: 0%;
 }
 
 /* Setting the search and history stlye */
