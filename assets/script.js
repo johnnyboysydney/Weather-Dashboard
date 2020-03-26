@@ -6,7 +6,9 @@ let dateTime = "";
 $("#search").on("click", function() {
     event.preventDefault();
     let city = $("#city-input").val().trim();
-    if(city != ''){
+    if (city != '') {
+        // The following clears the error if errored!
+        $("#error").html("")
         localStorage.setItem("city", city);
         console.log(localStorage.getItem("city"));
         searchCity(city);
@@ -14,6 +16,7 @@ $("#search").on("click", function() {
     }
     else {
         $("#error").html("Field cannot be empty");
+       
     }
 
 });
@@ -71,6 +74,7 @@ function forecast(city) {
     $.ajax({
         url: queryURL,
         method: "GET"
+        // forecastFunction
     }).then(function(forecastResponse){
         // Creating  a filter
         var filteredDays = forecastResponse.list.filter(
@@ -80,9 +84,12 @@ function forecast(city) {
         );
         console.log(filteredDays)
         let content = $(".content")
-        for (i = 0; i < content.length; i++) {
+        // debugger
+        for (i = 0; i < 5; i++) {
             let date = content[i].children("ul")[0].children("li").dates
-                
+            //console.log(date)
+
+            
         }
 
 
