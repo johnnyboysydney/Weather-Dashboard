@@ -30,7 +30,7 @@
                 <div class="col-sm-4">
                 <form class="search">
                     <label>Search for a city:</label><br>
-                    <input type="text" id="city-input"placeholder="Enter a city...">
+                    <input type="text" autocomplete="on" id="city-input" placeholder="Enter a city..."><span id="error"></span>
                     <button type="submit" id="search" name="city" required><i class="fa fa-search"></i></button><br><br>
                     <!-- Search history will populate below -->
                     <!-- Below are examples for styling purposes and positioning, will be removed when completed the funtion. -->
@@ -73,10 +73,10 @@
                     <h5>5-Day forecast:</h5>
                     <div class="row" id="forecast" >
                         <div class="square">
-                            <section class="col-sm-2"  class="content" id="day2">
+                            <section class="col-sm-2"  class="content" id="day1">
                                 <ul>
-                                    <li>date</li>
-                                    <li id="iconDay1">icon</li>
+                                    <li class="dates">date</li>
+                                    <li class="iconDay">icon</li>
                                     <li id="tempForecast">Temp:</li>
                                     <li id="humidityForecast">Humidity:</li>
                                 </ul>
@@ -85,8 +85,8 @@
                         <div class="square">
                             <section class="col-sm-2" class="content" id="day2">
                                 <ul>
-                                    <li>date</li>
-                                    <li id="iconDay2">icon</li>
+                                    <li class="dates">date</li>
+                                    <li class="iconDay">icon</li>
                                     <li id="tempForecast">Temp:</li>
                                     <li id="humidityForecast">Humidity:</li>
                                 </ul>
@@ -95,8 +95,8 @@
                         <div class="square">
                             <section class="col-sm-2" class="content" id="day3">
                                 <ul>
-                                    <li>date</li>
-                                    <li id="iconDay3">icon</li>
+                                    <li class="dates">date</li>
+                                    <li class="iconDay">icon</li>
                                     <li id="tempForecast">Temp:</li>
                                     <li id="humidityForecast">Humidity:</li>
                                 </ul>
@@ -105,8 +105,8 @@
                         <div class="square">
                             <section class="col-sm-2" class="content" id="day4">
                                 <ul>
-                                    <li>date</li>
-                                    <li id="iconDay4">icon</li>
+                                    <li class="dates">date</li>
+                                    <li class="iconDay">icon</li>
                                     <li id="tempForecast">Temp:</li>
                                     <li id="humidityForecast">Humidity:</li>
                                 </ul>
@@ -115,8 +115,8 @@
                         <div class="square">
                             <section class="col-sm-2" class="content" id="day5">
                                 <ul>
-                                    <li>date</li>
-                                    <li id="iconDay5">icon</li>
+                                    <li class="dates">date</li>
+                                    <li class="iconDay">icon</li>
                                     <li id="tempForecast">Temp:</li>
                                     <li id="humidityForecast">Humidity:</li>
                                 </ul>
