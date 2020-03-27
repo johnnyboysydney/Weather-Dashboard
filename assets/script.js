@@ -33,12 +33,10 @@ $.ajax({
     //console.log(response);
     // Setting variables for the city weather results 
     // show current search on main div
-    let cityName =$("#cityName").text(city);
-    let tempT = $("#temperature");
-    let humidity = $("#humidity").text("Humidity: "+ response.main.humidity + "%.");
-    let windSpeed = $("#windSpeed").text("WindSpeed: " + response.wind.speed + " m/s,");
-    let lon = response.coord.lon;
-    let lat = response.coord.lat;
+    let cityName =$("#cityName").attr("class", "nowrap").text(city);
+    let tempT = $("#temperature").attr("class", "nowrap");
+    let humidity = $("#humidity").attr("class", "nowrap").text("Humidity: "+ response.main.humidity + "%.");
+    let windSpeed = $("#windSpeed").attr("class", "nowrap").text("WindSpeed: " + response.wind.speed + " m/s,");
     
     // Get date and time and set the current date and time
     let today = new Date();
@@ -64,6 +62,19 @@ $.ajax({
 
     // Formula for C
     //C = (5/9) * (F - 32)
+    
+    // Variables for ajax call for UV response
+    let cityLat = response.coord.lat;
+    let cityLon = response.coord.lon;
+    let uvURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + "3d16044a2eba4d271046d70fd1f2c155" + "&lat=" + cityLat + "&lon=" + cityLon + "&units=imperial";
+    $.ajax({
+        url: uvURL,
+        method: "GET"
+    }).then(function (response) {
+        // Create variable to get the UV and to create dom element on div.
+        let uv = response.value;
+        let tempT = $("#uvIndex").attr("class", "nowrap").text("Uv Index: " + uv);
+    })
 })
 };
 
@@ -77,7 +88,7 @@ function forecast(city) {
         // forecastFunction
     }).then(function(forecastResponse){
         // Creating  a filter for the 5 days
-        var filteredDays = forecastResponse.list.filter(
+        let filteredDays = forecastResponse.list.filter(
             function (currentElement){
             return currentElement.dt_txt.includes("12:00:00")
             }	
@@ -87,26 +98,30 @@ function forecast(city) {
         for(let i = 0; i < filteredDays.length; i++ ){
             // Creating variables that holds the arry of data from filteredDays function
             let date = filteredDays[i].dt_txt.split(" ")[0];
-            let icon = filteredDays[i].weather.icon;
+            let icon = filteredDays[i].weather[0].icon;
+            //let iconUrl = "http://openweathermap.org/img/wn/" + icon + ".png";
             let tempF = filteredDays[i].main.temp;
             let humidity = filteredDays[i].main.humidity;
-
+            
             // Creating and adding classes and attributes to html elements.
             let square = $("<div>").attr("class","square");
-            let section = $("<section>").attr("class","content").attr("class", "col-sm-2");
+            let section = $("<section>").attr("class","content").attr("class", "col-sm-3");
             let list = $("<ul>");
-            let listElDates = $("<li>").attr("class","dates").text(date);
-            let listElicons = $("<li>").attr("class", "iconDay").text(icon);
-            let listElTempF = $("<li>").attr("class", "tempForecast").text("Temp: " + tempF);
-            let listElHumidityF = $("<li>").attr("class", "hunidityForecast").text("Humidity: " + humidity);
-            square.append(section.append(list.append(listElDates,listElicons,listElTempF,listElHumidityF)))
-             $("#forecast").append(square)
-            console.log(filteredDays[i])
+            let listElDates = $("<li>").attr("class","dates").attr("class", "nowrap").text(date);
+            //let listElicons = $("<img>").attr("class", "iconImg");
+            let listIcon = $("<ul>").append($("<img>").addClass("weatherImg").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png"));
+            let listElTempF = $("<li>").attr("class", "tempForecast").attr("class", "nowrap").text("Temp: " + tempF);
+            let listElHumidityF = $("<li>").attr("class", "hunidityForecast").attr("class", "nowrap").text("Humidity: " + humidity);
+    
+            // Appending all html elements together to form the buttons with the forecast
+            square.append(section.append(list.append(listElDates,listElTempF,listIcon,listElHumidityF)))
+             $("#forecast").append(square)//listElicons
+
         }    
     })
 };
 
-
+//<img src = "http://openweathermap.org/img/wn/">
 
 
 
