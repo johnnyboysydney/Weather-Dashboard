@@ -21,7 +21,7 @@ $("#search").on("click", function() {
 
 });
 
-// Creating the search function 
+// Show city name, the date an icon representing the weather conditions, the temperature, the humidity the wind speed, and the UV index.
 function searchCity(city){
     
     let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=3d16044a2eba4d271046d70fd1f2c155";
@@ -60,9 +60,6 @@ $.ajax({
     // Show Temperature on main div
     tempT.text("Temperature: "+ cTemp);
 
-    // Formula for C
-    //C = (5/9) * (F - 32)
-    
     // Variables for ajax call for UV response
     let cityLat = response.coord.lat;
     let cityLon = response.coord.lon;
@@ -74,11 +71,13 @@ $.ajax({
         // Create variable to get the UV and to create dom element on div.
         let uv = response.value;
         let tempT = $("#uvIndex").attr("class", "nowrap").text("Uv Index: " + uv);
+        // When checking the UV create a color that indicates whether the conditions are favorable, moderate, or severe
+
     })
 })
 };
 
-// 5 day forecast function 
+// / view future weather conditions for that city and show a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
 function forecast(city) {
     // Section for the 5 day query
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=3d16044a2eba4d271046d70fd1f2c155";
@@ -99,8 +98,6 @@ function forecast(city) {
             // Creating variables that holds the arry of data from filteredDays function
             let date = filteredDays[i].dt_txt.split(" ")[0];
             let icon = filteredDays[i].weather[0].icon;
-            //let iconUrl = "http://openweathermap.org/img/wn/" + icon + ".png";
-            let tempF = filteredDays[i].main.temp;
             let humidity = filteredDays[i].main.humidity;
             
             // Creating and adding classes and attributes to html elements.
@@ -108,11 +105,24 @@ function forecast(city) {
             let section = $("<section>").attr("class","content").attr("class", "col-sm-3");
             let list = $("<ul>");
             let listElDates = $("<li>").attr("class","dates").attr("class", "nowrap").text(date);
-            //let listElicons = $("<img>").attr("class", "iconImg");
             let listIcon = $("<ul>").append($("<img>").addClass("weatherImg").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png"));
-            let listElTempF = $("<li>").attr("class", "tempForecast").attr("class", "nowrap").text("Temp: " + tempF);
+            
+            // Declaring the function F to C
+            let cTemp = fToC(filteredDays[i].main.temp);
+            let tempT = cTemp;
+            
+            // Creating and adding classes and atricbutes to html elements.
+            let listElTempF = $("<li>").attr("class", "tempForecast").attr("class", "nowrap").text("Temp: " + tempT);
             let listElHumidityF = $("<li>").attr("class", "hunidityForecast").attr("class", "nowrap").text("Humidity: " + humidity);
-    
+           
+            // Function to show Farenheit to Celcious
+            function fToC(fahrenheit) {
+                const fTemp = Math.round(fahrenheit);
+                const fToCel = Math.round((fTemp - 32) * 5 / 9);
+                const temp = `${fTemp}\xB0F : ${fToCel}\xB0C.`;
+                return temp;    
+            }
+
             // Appending all html elements together to form the buttons with the forecast
             square.append(section.append(list.append(listElDates,listElTempF,listIcon,listElHumidityF)))
              $("#forecast").append(square)//listElicons
@@ -120,50 +130,13 @@ function forecast(city) {
         }    
     })
 };
-
-//<img src = "http://openweathermap.org/img/wn/">
-
-
-
-
-// Show city name, the date an icon representing the weather conditions, the temperature, the humidity the wind speed, and the UV index.
-
-
-
-
-// When checking the UV create a color that indicates whether the conditions are favorable, moderate, or severe
-
-
-
-// view future weather conditions for that city and show a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
-
-
-
+// To-Do
 // Ensure when opening the weather dashboard, it opens with the last shown city.
 
-
-// optional - create a switch that can choose a random city wupon opening. 
-// optional - Create a background img for the app depending on
+// Optionals
+// optional - create a switch that can choose a random city upon opening. 
+// optional - Create a background img for the app depending on weather
 // optional - the users location and weather at that current time/place.
 // optional - Convert from F to C with a switch. Code to change both ways below.
 
 
-// NOTES:
-// testing outputs with different approach and console.log() to verify its working. 
-    // All below will be cleaned in last refractoring of code. 
-    //var tempF = response.main.temp;
-    //var tempC = response.main.temp;
-    //console.log(tempT);
-    //console.log(cityName);
-    //console.log(humidity);
-    //console.log(windSpeed);
-    //console.log(lon);
-    //console.log(lat);
-    // function to convert Celcious to Farenheit
-    // Might use it later for swtiching options.
-    //function cToF(celsius) {
-    //const cTemp = celsius;
-    //const cToFahr = Math.round(cTemp * 9 / 5 + 32);
-    //const message = `${cTemp}\xB0C is ${cToFahr} \xB0F.`;
-    //console.log(message);
-    //}
