@@ -85,7 +85,7 @@ $.ajax({
         const fTemp = Math.round(fahrenheit);
         const fToCel = Math.round((fTemp - 32) * 5 / 9);
         const temp = `${fTemp}\xB0F : ${fToCel}\xB0C.`;
-        return temp;    
+        return temp;   
     }
     // Show Temperature on main div
     tempT.text("Temperature: "+ cTemp);

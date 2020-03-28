@@ -44,6 +44,9 @@ h1 {
     border: 2px solid grey;
     background-image: url(./image.jpg);
     background-size: 100% 100%;
+    width: 270px;
+    align-items: right;
+    text-align: right;
 }
 
 #images:hover {
