@@ -22,6 +22,7 @@ This project is licensed under the MIT License - see the <a href="/LICENCE.md">L
 
 ### Link to the App
 
+https://johnnyboysydney.github.io/Weather-Dashboard/.
 
 ### Authors
 
@@ -29,7 +30,7 @@ This project is licensed under the MIT License - see the <a href="/LICENCE.md">L
 
 ### Acknowledgments
 
-*To Agustin, my instructor and to Aditya, Vishal & Courteney -TA
-*Their teachings are helping understand complicated topics and their passion added to mine is an enriching experience.
+*To Agustin, my instructor and to Aditya & Vishal.
+
 
 Copyright 2020 &copy; John Merchan
