@@ -15,6 +15,7 @@ So you are traveling and need to plan ahead weather forecast up to 5 days, keepi
 * [Gitbash](https://gitforwindows.org/) - What would we do without our bash?
 
 ### Screenshots
+![Screenthot1](https://user-images.githubusercontent.com/54227198/77822566-114c0480-7148-11ea-9b5e-54518dd5fa3d.jpg)
 
 
 #### Licence
