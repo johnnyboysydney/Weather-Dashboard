@@ -150,7 +150,7 @@ function forecast(city) {
             let section = $("<section>").attr("class","content").attr("class", "col-sm-3");
             let list = $("<ul>");
             let listElDates = $("<li>").attr("class","dates").attr("class", "nowrap").text(date);
-            let listIcon = $("<ul>").append($("<img>").addClass("weatherImg").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png"));
+            let listIcon = $("<ul>").append($("<img>").addClass("weatherImg").attr("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png"));
             
             // Declaring the function F to C
             let cTemp = fToC(filteredDays[i].main.temp);
