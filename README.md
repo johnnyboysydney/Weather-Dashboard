@@ -18,16 +18,17 @@ So you are traveling and need to plan ahead weather forecast up to 5 days, keepi
 
 
 #### Licence
-https://github.com/johnnyboysydney/Weather-Dashboard/blob/master/LICENSE
+This project is licensed under the MIT License - see the <a href="/LICENCE.md">Link to the LICENCE</a> file for details
 
 ### Link to the App
 
 
 ### Authors
 
-* **John Merchan** - *completed all work*
+* **John Merchan** 
 
 ### Acknowledgments
+
 *To Agustin, my instructor and to Aditya, Vishal & Courteney -TA
 *Their teachings are helping understand complicated topics and their passion added to mine is an enriching experience.
 
