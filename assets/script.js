@@ -93,7 +93,7 @@ $.ajax({
     // Variables for ajax call for UV response
     let cityLat = response.coord.lat;
     let cityLon = response.coord.lon;
-    let uvURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + "3d16044a2eba4d271046d70fd1f2c155" + "&lat=" + cityLat + "&lon=" + cityLon + "&units=imperial";
+    let uvURL = "https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/uvi?appid=" + "3d16044a2eba4d271046d70fd1f2c155" + "&lat=" + cityLat + "&lon=" + cityLon + "&units=imperial";
     $.ajax({
         url: uvURL,
         method: "GET"
