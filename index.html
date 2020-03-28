@@ -33,13 +33,7 @@
                     <input type="text" autocomplete="on" id="city-input" placeholder="Enter a city..."><span id="error"></span>
                     <button type="submit" id="search" name="city" required><i class="fa fa-search"></i></button><br><br>
                     <!-- Search history will populate below -->
-                    <!-- Below are examples for styling purposes and positioning, will be removed when completed the funtion. -->
-                    <section><a href="">Madrid</a></section>
-                    <section><a href="">Sydney</a></section>
-                    <section><a href="">Madrid</a></section>
-                    <section><a href="">Sydney</a></section>
-                    <section><a href="">Madrid</a></section>
-                    <section><a href="">Sydney</a></section>
+                    <div id="history"></div>
                 </form>
                 </div>
                 <!-- This is the main display container for the searched city -->
@@ -49,19 +43,19 @@
                             <!-- a table to present the information from the input -->
                             <table id="resultsWeather">
                                 <tr>
-                                    <td id="cityName">...</td>
-                                    <td id="currentDate">...</td>
+                                    <td id="cityName"></td>
+                                    <td id="currentDate"></td>
                                 </tr>
                                 <tr>
-                                    <td id="temperature">...</td>
+                                    <td id="temperature"></td>
                                 <tr>
-                                    <td id="humidity">...</td>
+                                    <td id="humidity"></td>
                                 </tr>
                                 <tr>
-                                    <td id="windSpeed">...</td>
+                                    <td id="windSpeed"></td>
                                 <tr>
                                 </tr>
-                                    <td id="uvIndex">...</td>
+                                    <td id="uvIndex"></td>
                                 </tr>
                             </table>
                         </div>

@@ -1,25 +1,60 @@
 // Declaration of variables
-let dateTime = "";
+let cities = localStorage.getItem("cities");
+if (!cities) {
+    cities = [];
+}
+else
+{
+    cities = cities.split(",")
+};
+
 
 
 // show the history of the search and be able to return to that search on the main div
 $("#search").on("click", function() {
     event.preventDefault();
+    event.stopPropagation();
     let city = $("#city-input").val().trim();
     if (city != '') {
         // The following clears the error if errored!
-        $("#error").html("")
-        localStorage.setItem("city", city);
+        $("#city-input").html("")
+        
         //console.log(localStorage.getItem("city"));
         searchCity(city);
         forecast(city);
+        addHistory(city);
+        renderHistory()
     }
     else {
-        $("#error").html("Field cannot be empty");
-       
+        $("#city-input").html("Field cannot be empty");
     }
 
 });
+// Save the cities searched for
+function addHistory(city){ 
+    // Check for changes in the local item and log them
+    console.log(cities)
+    cities.push(city);
+    localStorage.setItem("cities", cities); 
+
+};
+
+// Render the history localstorage
+function renderHistory(){
+    $("#history").empty();
+    for (i = 0; i < cities.length; i++) {
+        //    
+        $("#history").append($("<button class='btn btn-lg'>").attr("cityName", cities[i]).text(cities[i]));
+    }
+    $("#history button").on("click",function(){
+        event.preventDefault();
+        let searchedCity = $(this).attr("cityName");
+        // This queries the ajax function to return the city.
+        searchCity(searchedCity);
+    });
+}
+
+
 
 // Show city name, the date an icon representing the weather conditions, the temperature, the humidity the wind speed, and the UV index.
 function searchCity(city){
@@ -33,10 +68,10 @@ $.ajax({
     //console.log(response);
     // Setting variables for the city weather results 
     // show current search on main div
-    let cityName =$("#cityName").attr("class", "nowrap").text(city);
+    $("#cityName").attr("class", "nowrap").text(city);
     let tempT = $("#temperature").attr("class", "nowrap");
-    let humidity = $("#humidity").attr("class", "nowrap").text("Humidity: "+ response.main.humidity + "%.");
-    let windSpeed = $("#windSpeed").attr("class", "nowrap").text("WindSpeed: " + response.wind.speed + " m/s,");
+    $("#humidity").attr("class", "nowrap").text("Humidity: "+ response.main.humidity + "%.");
+    $("#windSpeed").attr("class", "nowrap").text("WindSpeed: " + response.wind.speed + " m/s,");
     
     // Get date and time and set the current date and time
     let today = new Date();
@@ -68,11 +103,24 @@ $.ajax({
         url: uvURL,
         method: "GET"
     }).then(function (response) {
+        
         // Create variable to get the UV and to create dom element on div.
         let uv = response.value;
-        let tempT = $("#uvIndex").attr("class", "nowrap").text("Uv Index: " + uv);
+        $("#uvIndex").empty(); // clear the element first
+        $("#uvIndex").append($("<div id=\"uvColor\">").text("Uv Index: " + uv)).attr("class", "nowrap");
         // When checking the UV create a color that indicates whether the conditions are favorable, moderate, or severe
-
+        if(uv <= 3){
+            //change color to green
+            $("#uvColor").attr("style", "background-color:green ; width:65%");
+        }
+        else if( uv <= 7){
+            //change color to orange
+            $("#uvColor").attr("style", "background-color:orange ; width:65%");
+        }
+        else{
+            $("#uvColor").attr("style", "background-color:red ; width:65%");
+        };
+        
     })
 })
 };
@@ -94,7 +142,9 @@ function forecast(city) {
         );
         //console.log(filteredDays)
         // Creating the HTML elements to display the forecast
+        $("#forecast").empty();
         for(let i = 0; i < filteredDays.length; i++ ){
+            
             // Creating variables that holds the arry of data from filteredDays function
             let date = filteredDays[i].dt_txt.split(" ")[0];
             let icon = filteredDays[i].weather[0].icon;
@@ -122,9 +172,9 @@ function forecast(city) {
                 const temp = `${fTemp}\xB0F : ${fToCel}\xB0C.`;
                 return temp;    
             }
-
+            
             // Appending all html elements together to form the buttons with the forecast
-            square.append(section.append(list.append(listElDates,listElTempF,listIcon,listElHumidityF)))
+            square.append(section.append(list.append(listElDates,listIcon,listElTempF,listElHumidityF)))
              $("#forecast").append(square)//listElicons
 
         }    
