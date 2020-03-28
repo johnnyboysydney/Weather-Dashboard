@@ -1,3 +1,5 @@
+
+
 // Declaration of variables
 let cities = localStorage.getItem("cities");
 if (!cities) {
@@ -7,8 +9,6 @@ else
 {
     cities = cities.split(",")
 };
-
-
 
 // show the history of the search and be able to return to that search on the main div
 $("#search").on("click", function() {
@@ -28,15 +28,12 @@ $("#search").on("click", function() {
     else {
         $("#city-input").html("Field cannot be empty");
     }
-
 });
 // Save the cities searched for
 function addHistory(city){ 
     // Check for changes in the local item and log them
-    console.log(cities)
     cities.push(city);
     localStorage.setItem("cities", cities); 
-
 };
 
 // Render the history localstorage
@@ -44,7 +41,7 @@ function renderHistory(){
     $("#history").empty();
     for (i = 0; i < cities.length; i++) {
         //    
-        $("#history").append($("<button class='btn btn-lg'>").attr("cityName", cities[i]).text(cities[i]));
+        $("#history").append($("<button class='btn btn-info d-flex flex-column'>").attr("cityName", cities[i]).text(cities[i]));
     }
     $("#history button").on("click",function(){
         event.preventDefault();
@@ -53,8 +50,6 @@ function renderHistory(){
         searchCity(searchedCity);
     });
 }
-
-
 
 // Show city name, the date an icon representing the weather conditions, the temperature, the humidity the wind speed, and the UV index.
 function searchCity(city){
@@ -172,14 +167,13 @@ function forecast(city) {
                 const temp = `${fTemp}\xB0F : ${fToCel}\xB0C.`;
                 return temp;    
             }
-            
             // Appending all html elements together to form the buttons with the forecast
             square.append(section.append(list.append(listElDates,listIcon,listElTempF,listElHumidityF)))
              $("#forecast").append(square)//listElicons
-
         }    
     })
 };
+
 // To-Do
 // Ensure when opening the weather dashboard, it opens with the last shown city.
 

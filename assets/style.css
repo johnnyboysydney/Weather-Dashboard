@@ -2,8 +2,7 @@
 body {
     font-family: Arial;
 }
- 
-  
+   
 /* Setting the header style */
 h1 {
     background-color: rgb(41, 38, 38);
@@ -16,12 +15,10 @@ h1 {
     padding-left: 50px;
 }
 
-/* Background image to rotate randomly for the main div */
-/*
-Work in-progress for the carusel of images for the background
-of the App, which I want to be able to set it fixed
-if the user desires.
-*/
+/* Setting the hitory search links style & position */
+#history {
+    display: block;
+}
 
 .forecast.content li {
     font-size: 6px;
@@ -30,6 +27,8 @@ if the user desires.
 
 /* Setting the main div style */
 #main {
+    width: 600px;
+    height: 200px;
     background-color: aquamarine;
     text-align: left;
     padding-bottom: 0%;
@@ -40,14 +39,11 @@ if the user desires.
     color: black;
 }
 
-
-
 /* Creating the stlye and animation of the image which is an href to the city map */
 #images {
     border: 2px solid grey;
     background-image: url(./image.jpg);
     background-size: 100% 100%;
-
 }
 
 #images:hover {
@@ -73,8 +69,7 @@ if the user desires.
 
 .nowrap {
     white-space: nowrap ;
-  }
-
+}
 
 .square {
     background-color: #2196F3;
@@ -110,19 +105,19 @@ if the user desires.
 /* Setting the search and history stlye */
 * {
     box-sizing: border-box;
-  }
+}
   
-  /* Setting the input style */
-  form.search input[type=text] {
+/* Setting the input style */
+form.search input[type=text] {
     padding: 5 px;
     font-size: 14px;
     border: 1px solid grey;
     float: left;
     width: 50%;
     background: #f1f1f1;
-  }
+}
   /* Setting the submit button styles and effects, hover, after */
-  #search {
+#search {
     float: left;
     width: 10%;
     padding: 1px;
@@ -132,21 +127,22 @@ if the user desires.
     border: 1px solid grey;
     border-left: none;
     cursor: pointer;
-  }
+}
   
-  #search:hover {
+#search:hover {
     background: #0b7dda;
-  }
+}
   
-  #search::after {
+#search::after {
     content: "";
     clear: both;
     display: table;
-  }
+}
 
-  /* Setting footer style */
+/* Setting footer style */
 footer {
     background-color: rgb(41, 38, 38);
     color: aliceblue; 
     text-align: center;
+    font-size: smaller;
 }
