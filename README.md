@@ -22,6 +22,7 @@ This project is licensed under the MIT License - see the <a href="/LICENCE.md">L
 
 ### Link to the App
 
+https://johnnyboysydney.github.io/Weather-Dashboard/.
 
 ### Authors
 
