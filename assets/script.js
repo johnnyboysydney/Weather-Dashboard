@@ -1,5 +1,10 @@
 
 
+//window.onload = function(initialise)
+//$(document).ready(function(initialise){})
+//document.addEventListener("DOMContentLoaded", (initialise){
+//});
+
 // Declaration of variables
 let cities = localStorage.getItem("cities");
 if (!cities) {
@@ -48,8 +53,9 @@ function renderHistory(){
         let searchedCity = $(this).attr("cityName");
         // This queries the ajax function to return the city.
         searchCity(searchedCity);
+        forecast(searchedCity);
     });
-}
+};
 
 // Show city name, the date an icon representing the weather conditions, the temperature, the humidity the wind speed, and the UV index.
 function searchCity(city){
@@ -80,13 +86,6 @@ $.ajax({
     // Declaring the function F to C
     let cTemp = fToC(response.main.temp);
     
-    // Function to show Farenheit to Celcious
-    function fToC(fahrenheit) {
-        const fTemp = Math.round(fahrenheit);
-        const fToCel = Math.round((fTemp - 32) * 5 / 9);
-        const temp = `${fTemp}\xB0F : ${fToCel}\xB0C.`;
-        return temp;   
-    }
     // Show Temperature on main div
     tempT.text("Temperature: "+ cTemp);
 
@@ -119,6 +118,13 @@ $.ajax({
     })
 })
 };
+// Function to show Farenheit to Celcious
+function fToC(fahrenheit) {
+    const fTemp = Math.round(fahrenheit);
+    const fToCel = Math.round((fTemp - 32) * 5 / 9);
+    const temp = `${fTemp}\xB0F : ${fToCel}\xB0C.`;
+    return temp;   
+};
 
 // / view future weather conditions for that city and show a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
 function forecast(city) {
@@ -139,7 +145,7 @@ function forecast(city) {
         // Creating the HTML elements to display the forecast
         $("#forecast").empty();
         for(let i = 0; i < filteredDays.length; i++ ){
-            
+             
             // Creating variables that holds the arry of data from filteredDays function
             let date = filteredDays[i].dt_txt.split(" ")[0];
             let icon = filteredDays[i].weather[0].icon;
@@ -174,11 +180,14 @@ function forecast(city) {
     })
 };
 
-// To-Do
-// Ensure when opening the weather dashboard, it opens with the last shown city.
+// First onload DOM
+searchCity(localStorage.getItem("cities").split(",")[localStorage.getItem("cities").split(",").length-1]);
+renderHistory();
+forecast(localStorage.getItem("cities").split(",")[localStorage.getItem("cities").split(",").length-1]);
+
 
 // Optionals
-// optional - create a switch that can choose a random city upon opening. 
+// optional - create a switch that can choose a random city upon opening.
 // optional - Create a background img for the app depending on weather
 // optional - the users location and weather at that current time/place.
 // optional - Convert from F to C with a switch. Code to change both ways below.
